@@ -4,7 +4,7 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return true;
+    return customers.map(person => `Hello ${person.first_name} ${person.last_name}!`);
 }
 
 /* 
