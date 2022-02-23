@@ -82,7 +82,20 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordCustomers = customers.filter(
+        (customer) => customer.car_make === 'Ford'
+    );
+
+    const countHashMap = fordCustomers.reduce((acc, cust) => {
+        if(acc[cust.gender]) {
+            acc[cust.gender]++;
+        } else {
+            acc[cust.gender] = 1;
+        }
+        return acc;
+    }, {});
+
+    return countHashMap;
 }
 
 //////////////////////////////////////////////////////////
