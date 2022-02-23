@@ -4,7 +4,9 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return true;
+    return customers.map(
+        (person) => `Hello ${person.first_name} ${person.last_name}!`
+    );
 }
 
 /* 
@@ -13,13 +15,14 @@ Output:
 */
 
 export function greetUsersOverAge60(customers) {
-    return customers
-        // first, filter over the user to get the ones over 60
-        .filter(item => item.age > 60)
-        // then map over them to make a greeting
-        .map(item => `Hello ${item.first_name} ${item.last_name}!`);
+    return (
+        customers
+      // first, filter over the user to get the ones over 60
+            .filter((item) => item.age > 60)
+      // then map over them to make a greeting
+            .map((item) => `Hello ${item.first_name} ${item.last_name}!`)
+    );
 }
-
 
 /* 
 Output: 
@@ -27,16 +30,23 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    return customers.reduce((acc, cust) => {
+        acc = cust.age + acc;
+        return acc;
+    }, 0);
 }
-
 /* 
 Output: 
 4.5
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+    const totalLength = customers.length;
+    const coolFactorNum = customers.reduce((acc, cust) => {
+        acc = cust.cool_factor + acc;
+        return acc;
+    }, 0);
+    return coolFactorNum / totalLength;
 }
 
 /* 
@@ -50,7 +60,15 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+    const countHashMap = customers.reduce((acc, cust) => {
+        if(acc[cust.gender]) {
+            acc[cust.gender]++;
+        } else {
+            acc[cust.gender] = 1;
+        }
+        return acc;
+    }, {});
+    return countHashMap;
 }
 
 /* 
@@ -64,7 +82,20 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordCustomers = customers.filter(
+        (customer) => customer.car_make === 'Ford'
+    );
+
+    const countHashMap = fordCustomers.reduce((acc, cust) => {
+        if(acc[cust.gender]) {
+            acc[cust.gender]++;
+        } else {
+            acc[cust.gender] = 1;
+        }
+        return acc;
+    }, {});
+
+    return countHashMap;
 }
 
 //////////////////////////////////////////////////////////
@@ -102,7 +133,6 @@ Output:
 }
 */
 
-
 export function getAllCoolFactorsOfEachCar(customers) {
     return true;
 }
@@ -119,7 +149,6 @@ Output:
 export function getAverageCoolFactorOfEachCar(customers) {
     return true;
 }
-
 
 /* 
 Output: 
@@ -157,7 +186,6 @@ export function getCoolFactorsByAgeBracket(customers) {
     return true;
 }
 
-
 /* 
 Output: 
 // break the customers into age demographic blocks. For example, this says there are 55 people between 10 and 19, 38 people between 20 and 29, etc
@@ -173,4 +201,3 @@ Output:
 export function getAverageCoolFactorByAgeBracket(customers) {
     return true;
 }
-
