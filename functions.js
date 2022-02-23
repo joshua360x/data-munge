@@ -30,8 +30,8 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return customers.reduce((acc, cum) => {
-        acc = cum.age + acc;
+    return customers.reduce((acc, cust) => {
+        acc = cust.age + acc;
         return acc;
     }, 0);
 }
@@ -42,8 +42,8 @@ Output:
 
 export function getAverageCoolFactor(customers) {
     const totalLength = customers.length;
-    const coolFactorNum = customers.reduce((acc, cum) => {
-        acc = cum.cool_factor + acc;
+    const coolFactorNum = customers.reduce((acc, cust) => {
+        acc = cust.cool_factor + acc;
         return acc;
     }, 0);
     return coolFactorNum / totalLength;
@@ -60,7 +60,15 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+    const countHashMap = customers.reduce((acc, cust) => {
+        if(acc[cust.gender]) {
+            acc[cust.gender]++;
+        } else {
+            acc[cust.gender] = 1;
+        }
+        return acc;
+    }, {});
+    return countHashMap;
 }
 
 /* 

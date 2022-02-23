@@ -1,5 +1,11 @@
 // IMPORT MODULES under test here:
-import { greetUsersOverAge60, greetUsers, addAllAges, getAverageCoolFactor } from '../functions.js';
+import {
+    greetUsersOverAge60,
+    greetUsers,
+    addAllAges,
+    getAverageCoolFactor,
+    getTotalOfEachGender,
+} from '../functions.js';
 import customers from './data.js';
 
 const { test, skip } = QUnit;
@@ -91,19 +97,25 @@ test('addAllAges', (expect) => {
 });
 
 test('getAverageCoolFactor', (expect) => {
-    const expected = true;
+    const expected = 5.088888888888889;
 
     const actual = getAverageCoolFactor(customers);
 
     expect.equal(actual, expected);
 });
 
-skip('getTotalOfEachGender', (expect) => {
-    const expected = true;
+test('getTotalOfEachGender', (expect) => {
+    const expected = {
+        Bigender: 1,
+        Female: 19,
+        Genderqueer: 1,
+        Male: 23,
+        'Non-binary': 1,
+    };
 
-    const actual = greetUsers();
+    const actual = getTotalOfEachGender(customers);
 
-    expect.equal(actual, expected);
+    expect.deepEqual(actual, expected);
 });
 
 skip('getGenderBreakdownOfFordOwners', (expect) => {
