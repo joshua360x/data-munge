@@ -4,7 +4,9 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return customers.map(person => `Hello ${person.first_name} ${person.last_name}!`);
+    return customers.map(
+        (person) => `Hello ${person.first_name} ${person.last_name}!`
+    );
 }
 
 /* 
@@ -13,13 +15,14 @@ Output:
 */
 
 export function greetUsersOverAge60(customers) {
-    return customers
-        // first, filter over the user to get the ones over 60
-        .filter(item => item.age > 60)
-        // then map over them to make a greeting
-        .map(item => `Hello ${item.first_name} ${item.last_name}!`);
+    return (
+        customers
+      // first, filter over the user to get the ones over 60
+            .filter((item) => item.age > 60)
+      // then map over them to make a greeting
+            .map((item) => `Hello ${item.first_name} ${item.last_name}!`)
+    );
 }
-
 
 /* 
 Output: 
@@ -27,17 +30,24 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    return customers.reduce((acc, cum) => {
+        acc = cum.age + acc;
+        return acc;
+    }, 0);
 }
-
 /* 
 Output: 
 4.5
 */
 
-export function getAverageCoolFactor(customers) {
-    return true;
-}
+// export function getAverageCoolFactor(customers) {
+//     const totalLength = customers.length;
+//     const coolFactorNum = customers.reduce((acc, cum) => {
+//         acc = cum.cool_factor + acc;
+//         return acc;
+//     }, 0);
+//     return coolFactorNum / totalLength;
+// }
 
 /* 
 Output: 
@@ -102,7 +112,6 @@ Output:
 }
 */
 
-
 export function getAllCoolFactorsOfEachCar(customers) {
     return true;
 }
@@ -119,7 +128,6 @@ Output:
 export function getAverageCoolFactorOfEachCar(customers) {
     return true;
 }
-
 
 /* 
 Output: 
@@ -157,7 +165,6 @@ export function getCoolFactorsByAgeBracket(customers) {
     return true;
 }
 
-
 /* 
 Output: 
 // break the customers into age demographic blocks. For example, this says there are 55 people between 10 and 19, 38 people between 20 and 29, etc
@@ -173,4 +180,3 @@ Output:
 export function getAverageCoolFactorByAgeBracket(customers) {
     return true;
 }
-
