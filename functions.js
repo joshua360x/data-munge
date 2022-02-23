@@ -40,14 +40,14 @@ Output:
 4.5
 */
 
-// export function getAverageCoolFactor(customers) {
-//     const totalLength = customers.length;
-//     const coolFactorNum = customers.reduce((acc, cum) => {
-//         acc = cum.cool_factor + acc;
-//         return acc;
-//     }, 0);
-//     return coolFactorNum / totalLength;
-// }
+export function getAverageCoolFactor(customers) {
+    const totalLength = customers.length;
+    const coolFactorNum = customers.reduce((acc, cum) => {
+        acc = cum.cool_factor + acc;
+        return acc;
+    }, 0);
+    return coolFactorNum / totalLength;
+}
 
 /* 
 Output: 
